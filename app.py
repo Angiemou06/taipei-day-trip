@@ -5,7 +5,7 @@ from collections import Counter
 db_config = {
     "pool_name": "mypool",
     "pool_size": 10,
-    "host": "localhost",
+    "host": "angie",
     "user": "root",
     "password": "123456",
     "database": "taipei_day_trip"
