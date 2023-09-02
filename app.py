@@ -5,8 +5,8 @@ from collections import Counter
 db_config = {
     "pool_name": "mypool",
     "pool_size": 10,
-    "host": "angie",
-    "user": "root",
+    "host": "localhost",
+    "user": "angie",
     "password": "123456",
     "database": "taipei_day_trip"
 }
