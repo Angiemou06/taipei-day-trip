@@ -6,7 +6,7 @@ db_config = {
     "pool_name": "mypool",
     "pool_size": 10,
     "host": "localhost",
-    "user": "angie",
+    "user": "root",
     "password": "123456",
     "database": "taipei_day_trip"
 }
@@ -197,9 +197,8 @@ def attractions():
 			
 	else:
 		return sortpage(page)
-@app.route("/api/attraction",methods=["get"])
-def attractionId():
-	attractionId = request.args.get("attractionId")
+@app.route("/api/attraction/<int:attractionId>",methods=["get"])
+def attractionId(attractionId):
 	if attractionId is None:
 		response_data = {
 			"error": True,
@@ -248,9 +247,8 @@ def attractionId():
 					"lng":longitude,
 					"images":fig
 				}
-				attractions_data.append(data)
 				response = {
-					"data": attractions_data
+					"data": data
 				}
 			response = json.dumps(response, ensure_ascii=False)
 			return response ,200, {"Content-Type": "application/json"}
@@ -277,7 +275,11 @@ def mrts():
 	sort_list=[]
 	for i in sorted_elements:
 		sort_list.append(i[0])
-	response = json.dumps(sort_list, ensure_ascii=False)
-	return response ,400, {"Content-Type": "application/json"}
-app.run(host="0.0.0.0", port=3000)
+	response={
+  		"data": sort_list
+	}
+	response = json.dumps(response, ensure_ascii=False)
+	return response ,200, {"Content-Type": "application/json"}
+app.run(host='0.0.0.0', port=3000)
+
 
