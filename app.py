@@ -58,6 +58,7 @@ def attractions():
 			number = cursor.fetchone()[0]
 			cursor.execute("SELECT * FROM attraction LIMIT 12 OFFSET %s",(offset,))
 			result = cursor.fetchall()
+			con.close()
 			attractions_data=[]
 			for row in result:
 				id = row[0]
@@ -197,6 +198,7 @@ def attractions():
 			
 	else:
 		return sortpage(page)
+	
 @app.route("/api/attraction/<int:attractionId>",methods=["get"])
 def attractionId(attractionId):
 	if attractionId is None:
@@ -219,7 +221,7 @@ def attractionId(attractionId):
 			con, cursor = connect_to_database()
 			cursor.execute("SELECT * FROM attraction WHERE id=%s",(attractionId,))
 			result = cursor.fetchall()
-			attractions_data=[]
+			con.close()
 			for row in result:
 				id = row[0]
 				name = row[1]
