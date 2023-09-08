@@ -1,6 +1,9 @@
 from flask import *
 import mysql.connector.pooling
 from collections import Counter
+from flask_cors import CORS
+
+cors = CORS(app)
 
 db_config = {
     "pool_name": "mypool",
@@ -127,6 +130,7 @@ def attractions():
     if keyword:
         con, cursor = connect_to_database()
         cursor.execute("SELECT COUNT(*) FROM attraction WHERE MRT = %s OR name LIKE %s", (keyword, "%" + keyword + "%"))
+        # 如果有設index，SELECT COUNT就會很快。
         number = cursor.fetchone()[0]
         if number == 0:
             response_data = {
@@ -175,6 +179,12 @@ def attractions():
                 latitude = row[7]
                 longitude = row[6]
                 cursor.execute("SELECT * FROM figure WHERE attraction_id = %s", (id,))
+                # SELECT attraction.*, GROUP_CONCAT(images.images_link) AS images_links  #GROUP_CONCAT 一次把同一個編號的資料都取出來
+                # FROM attraction
+                # LEFT JOIN images ON attraction.id = images.attraction_id
+                # WHERE mrt = %s OR name LIKE %s
+                # GROUP BY attraction.id
+                # LIMIT %s, %s
                 fig_result = cursor.fetchall()
                 fig = []
                 for row in fig_result:
@@ -283,8 +293,15 @@ def mrts():
 	response={
   		"data": sort_list
 	}
+    # SELECT a.mrt 
+    # FROM attractions a
+    # GROUP BY a.mrt
+    # ORDER BY COUNT(*) DESC, a.mrt;
+
+    # 可以去檢測這個COUNT效率好不好，該如何優化，可以用EXPLAIN＋索引看能不能優化，假如不行，可以考慮要不要做快取，做完之後把結果先存起來放在全域變數裡，可以從裡面拿就好，比較快，但要注意資料更新時變數需要更新（空間換取時間）
+
 	response = json.dumps(response, ensure_ascii=False)
 	return response ,200, {"Content-Type": "application/json"}
-app.run(host='0.0.0.0', port=3000)
+app.run(host='0.0.0.0', port=4000)
 
 
