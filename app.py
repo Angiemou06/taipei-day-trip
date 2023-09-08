@@ -3,8 +3,6 @@ import mysql.connector.pooling
 from collections import Counter
 from flask_cors import CORS
 
-cors = CORS(app)
-
 db_config = {
     "pool_name": "mypool",
     "pool_size": 10,
@@ -27,6 +25,7 @@ def connect_to_database():
 app=Flask(__name__)
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
+cors = CORS(app)
 
 # Pages
 @app.route("/")
