@@ -187,16 +187,16 @@ main{
     width: 32px;
     height: 32px;
     justify-content: center;
-    z-index: 2;
     align-items: flex-start;
+    padding-top: 10px;
 }
 .arrow_right{
     display: flex;
     width: 32px;
     height: 32px;
     justify-content: center;
-    align-items: center;
-    z-index: 2;
+    align-items: flex-start;
+    padding-top: 10px;
 }
 .arrow_left_img{
     width: 32px;
