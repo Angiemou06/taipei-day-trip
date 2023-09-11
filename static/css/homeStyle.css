@@ -160,38 +160,35 @@ body{
 main{
     position: relative;
     top: 63px;
-    /* left: 50%;
-    transform: translateX(-50%); */
 }
 
 .list_bar{
     display: flex;
     width: 100%;
-    align-items: flex-start;
     background: #FFF;
     margin-top: 20px;
     margin-bottom: 20px;
     justify-content: center;
-    
+    align-items: center;
 }
 
 .left_container{
     display: flex;
-    padding: 9px 0px 9px 15px;
-    align-items: flex-start;
+}
+.list{
+    display: flex;
+    width: 1200px;
 }
 .right_container{
     display: flex;
-    padding: 9px 15px 9px 0px;
-    align-items: flex-start;
 }
 .arrow_left{
     display: flex;
     width: 32px;
     height: 32px;
     justify-content: center;
-    align-items: center;
     z-index: 2;
+    align-items: flex-start;
 }
 .arrow_right{
     display: flex;
@@ -593,9 +590,12 @@ main{
 @media(max-width:1200px){
     
     main{
-        width: 95%;
+        width: 100%;
     }
     .list_bar{
+        width: 100%;
+    }
+    .list{
         width: 100%;
     }
     .attractions{
