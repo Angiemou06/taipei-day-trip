@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home page</title>
+    <title>台北一日遊</title>
     <link rel="stylesheet" type="text/css" href="../static/css/homeStyle.css">
 </head>
-<body>
-    <div class="navigation_container">
+<body id="body">
+    <div class="navigation_con">
         <div class="navigation">
             <div class="title">
                 台北一日遊
@@ -23,26 +23,22 @@
         </div>
     </div>
     <div class="hero_section">
-        <img src="../static/image/welcome.png" class="welcome_img">
-        <img src="../static/image/welcome_ori.png" class="welcome_img_360">
-        <div class="welcome_title">
-                <div class="image_title_1">
-                    輕鬆享受台北一日悠閒
-                </div>
-                <div class="image_title_2">
-                    探索每個角落，體驗城市的深度旅遊行程
-                </div>
-                <div class="search_bar">
-                    <div class="input-container">
-                        <input class="input" value="輸入景點名稱查詢" id="input">
-                    </div>
-                    <button class="surch_button" id="surch_button">
-                        <img src="../static/image/icon.png" class="icon_image">
-                    </button>
-                </div>
-        </div>   
+        <div class="image_title_1">
+            輕鬆享受台北一日悠閒
+        </div>
+        <div class="image_title_2">
+            探索每個角落，體驗城市的深度旅遊行程
+        </div>
+        <div class="search_bar">
+            <div class="input-container">
+                <input class="input" value="輸入景點名稱查詢" id="input">
+            </div>
+            <button class="search_button" id="search_button">
+                <img src="../static/image/icon.png" class="icon_image">
+            </button>
+        </div> 
     </div>
-    <main id="main">
+   <main id="main">
         <div class="list_bar">
             <div class="left_container">
                 <button class="arrow_left" id="scrollLeft">
@@ -313,11 +309,11 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="footer_text">
-            COPYRIGHT © 2023 台北一日遊
+    <div class="footer">
+        <div class="footer-text">
+            COPYRIGHT © 2021 台北一日遊
         </div>
-    </footer>
+    </div>
     <script src="../static/check.js"></script>
 </body>
 </html>
