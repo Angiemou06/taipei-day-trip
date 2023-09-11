@@ -70,11 +70,16 @@ body{
     background-image: url("../image/welcome.png");
     background-position: top left;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.welcome_title{
+    width: 1200px;
 }
 
 .image_title_1{
     padding-top: 85px;
-    margin-left: 370px;
     color: var(--secondary-color-gray-10, #F8F8F8);
     text-shadow: 0px 0px 30px #ABC;
     font-family: Noto Sans TC;
@@ -82,7 +87,6 @@ body{
     font-style: normal;
     font-weight: 700;
     line-height: 24px;
-    margin-left: 370px;
 }
 .image_title_2{
     margin-top: 20px;
@@ -92,13 +96,11 @@ body{
     font-style: normal;
     font-weight: 700;
     margin-bottom: 25px;
-    margin-left: 370px;
 }
 
 .search_bar{
     display: flex;
     height: 46px;
-    margin-left: 370px;
     align-items: flex-start;
 }
 .input{
@@ -591,6 +593,9 @@ main{
     
     main{
         width: 100%;
+    }
+    .welcome_title{
+        width: 100%
     }
     .list_bar{
         width: 100%;
