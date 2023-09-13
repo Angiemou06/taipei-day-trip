@@ -10,13 +10,15 @@ let ct=0;
 
 // 滾動向左的函數
 scrollLeftButton.addEventListener('click', () => {
-    scrollValue -= 50; // 根據需要調整滾動距離
+    scrollValue = scrollValue <= 0 ? scrollValue : scrollValue-50; // 根據需要調整滾動距離
     optionsContainer.scrollTo(scrollValue, 0);
 });
 
 // 滾動向右的函數
 scrollRightButton.addEventListener('click', () => {
-    scrollValue += 50; // 根據需要調整滾動距離
+    let ccc = document.querySelector("#optionsContainer");
+    let total = ccc.scrollWidth-ccc.clientWidth;
+    scrollValue = scrollValue >= total ? scrollValue : scrollValue+50;  // 根據需要調整滾動距離
     optionsContainer.scrollTo(scrollValue, 0);
 });
 
@@ -72,13 +74,13 @@ async function fetchAndDisplayData(url) {
     let number = data.data.length;
 
     // 获取目标元素
-    let optionsContainer = document.getElementById('attractions');
+    let attractions = document.getElementById('attractions');
 
     // 创建 spacer，用于增加间距
     let spacer = document.createElement('div');
-    spacer.style.height = '30px'; // 设置高度为 30px
-    spacer.style.width = '170px'
-    optionsContainer.appendChild(spacer);
+    spacer.style.height = '30px'; 
+    spacer.style.width = '100%';
+    attractions.appendChild(spacer);
 
     // 创建新的 div 元素 newGrid
     let newGrid = document.createElement('div');
@@ -146,7 +148,7 @@ async function fetchAndDisplayData(url) {
     }
 
     // 將新的 div 添加到目標元素中
-    optionsContainer.appendChild(newGrid);
+    attractions.appendChild(newGrid);
     maxLength = 12;
     for (let k=0;k<number;k++){
         j = nextPage * 12 + k +1;
@@ -181,23 +183,22 @@ async function scrollHandler() {
     }
     else if (nextPage== null && ct==0){
 
-        optionsContainer = document.getElementById('attractions');
+        attractions = document.getElementById('attractions');
         spacer = document.createElement('div');
-        spacer.style.height = '100px'; // 设置高度为 30px
-        spacer.style.width = '170px'
-        optionsContainer.appendChild(spacer);
+        spacer.style.height = '30px';
+        spacer.style.width = '100%';
+        attractions.appendChild(spacer);
         ct++;
     }
 }
 
 
-// 初始时添加滚动事件监听器
 window.addEventListener('scroll', scrollHandler);
 
 let input = document.getElementById('input');
-let surch_button = document.getElementById('surch_button');
+let search_button = document.getElementById('search_button');
 
-surch_button.addEventListener('click', async () => {
+search_button.addEventListener('click', async () => {
     let attractions = document.getElementById('attractions');
     attractions.innerHTML = '';
     let keyword = input.value;
@@ -211,13 +212,13 @@ surch_button.addEventListener('click', async () => {
                 let number = data.data.length;
 
                 // 获取目标元素
-                let optionsContainer = document.getElementById('attractions');
+                let attractions = document.getElementById('attractions');
 
                 // 创建 spacer，用于增加间距
                 let spacer = document.createElement('div');
-                spacer.style.height = '30px'; // 设置高度为 30px
-                spacer.style.width = '170px';
-                optionsContainer.appendChild(spacer);
+                spacer.style.height = '30px';
+                spacer.style.width = '100%';
+                attractions.appendChild(spacer);
 
                 // 创建新的 div 元素 newGrid
                 let newGrid = document.createElement('div');
@@ -285,7 +286,7 @@ surch_button.addEventListener('click', async () => {
                 }
 
                 // 將新的 div 添加到目標元素中
-                optionsContainer.appendChild(newGrid);
+                attractions.appendChild(newGrid);
                 maxLength = 12;
                 for (let k = 0; k < number; k++) {
                     j = page * 12 + k + 1;
@@ -307,7 +308,7 @@ surch_button.addEventListener('click', async () => {
                     infoRight.innerHTML = newCategory;
                 };
                 nextPage = data.nextPage;
-                if (nextPage === null){
+                if (nextPage == null){
                     return;
                 }
                 else{
@@ -337,8 +338,8 @@ buttonsContainer.addEventListener('click', (event) => {
             cancelable: true,
             view: window
          });
-        let surch_button = document.getElementById('surch_button');
-        surch_button.dispatchEvent(clickEvent);    
+        let search_button = document.getElementById('search_button');
+        search_button.dispatchEvent(clickEvent);    
     
     }
 });
