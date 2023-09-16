@@ -11,12 +11,13 @@ function getDate(){
 }
 
 function checkCost(number){
+    console.log(number);
     let id = number.id;
     cost = document.getElementById("cost");
-    if (id==="1"){
+    if (id==="r-1"){
         cost.innerHTML=2000;
     }
-    else if(id==="2"){
+    else if(id==="r-2"){
         cost.innerHTML=2500;
     }
 }
@@ -56,6 +57,10 @@ function insertData(){
     let dotGroup = document.querySelector(".image-panel__dot-group");
     let idCt = 0;
     for (let i=0;i<number;i++){
+        if(!Data["images"][i].endsWith("jpg")){
+            continue;
+        }
+            
         let img = document.createElement("img");
         img.src=Data["images"][i];
         boardImages.appendChild(img);
@@ -111,3 +116,6 @@ function changeImage(){
         imageGroup.scrollTo(imageGroup.offsetWidth*currentIndex, 0);
     });
 }
+
+window.onload=getAPIData();
+window.onload=getDate();
