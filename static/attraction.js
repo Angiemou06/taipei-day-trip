@@ -23,7 +23,7 @@ function checkCost(number){
 }
 
 function getAPIData(){
-    url = "http://192.168.68.119:3000/api/attraction/"+id;
+    url = "/api/attraction/"+id;
     fetch(url)
         .then(function (response) {
             return response.json();

@@ -23,7 +23,7 @@ scrollRightButton.addEventListener('click', () => {
 });
 
 window.onload = function () {
-    let url = "http://100.20.120.162:3000/api/attractions?page=0";
+    let url = "/api/attractions?page=0";
     fetch(url)
         .then(function (response) {
             return response.json();
@@ -53,7 +53,7 @@ window.onload = function () {
                 infoRight.innerHTML = newCategory;
             }
         });
-        url = "http://100.20.120.162:3000/api/mrts";
+        url = "/api/mrts";
         fetch(url)
         .then(function (response) {
             return response.json();
@@ -181,7 +181,7 @@ async function fetchAndDisplayData(url) {
 async function scrollHandler() {
     if (nextPage !== null && !loadingData) {
         if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
-            let url = "http://100.20.120.162:3000/api/attractions?page=" + nextPage;
+            let url = "/api/attractions?page=" + nextPage;
             // 获取目标元素
             await fetchAndDisplayData(url);
         }
@@ -208,7 +208,7 @@ search_button.addEventListener('click', async () => {
     attractions.innerHTML = '';
     let keyword = input.value;
     let page = 0;
-    let url = "http://100.20.120.162:3000/api/attractions?page=" + page + "&" + "keyword=" + keyword;
+    let url = "/api/attractions?page=" + page + "&" + "keyword=" + keyword;
     while(1){
         try {
             let response = await fetch(url);
@@ -322,7 +322,7 @@ search_button.addEventListener('click', async () => {
                 }
                 else{
                     page++;
-                    url = "http://100.20.120.162:3000/api/attractions?page=" + page + "&" + "keyword=" + keyword;
+                    url = "/api/attractions?page=" + page + "&" + "keyword=" + keyword;
                 }
             } else {
                 attractions.innerHTML = '沒有相關資料';
