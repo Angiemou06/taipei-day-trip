@@ -33,6 +33,8 @@ window.onload = function () {
             let maxLength = 12; // 设置文本最大长度
             for (let i = 0; i < data.data.length; i++) {
                 j = i + 1;
+                let form = document.getElementById("form_"+j);
+                form.action="/attraction/"+j;
                 let img = document.getElementById("img_" + j);
                 newImageUrl = data.data[i]["images"][0];
                 img.src = newImageUrl;
@@ -82,20 +84,23 @@ async function fetchAndDisplayData(url) {
     spacer.style.width = '100%';
     attractions.appendChild(spacer);
 
-    // 创建新的 div 元素 newGrid
+    // 創建新的 div 元素 newGrid
     let newGrid = document.createElement('div');
     newGrid.className = "attractions_group";
     newGrid.id = "attractions_group";
     // 在 newGrid 中添加新的 attraction 元素
     for (let i = 1 ;i < number+1; i++) {
         j = nextPage * 12 + i;
-        let subDiv = document.createElement('div');
-        subDiv.className = "attraction attraction_" + j;
+        let form = document.createElement('form');
+        form.id = "form_"+j;
+        form.action="/attraction/"+j;
+        let subButton = document.createElement('button');
+        subButton.className = "attraction attraction_" + j;
 
         // 創建 img 元素
         let imgDiv = document.createElement('div');
         imgDiv.className="img";
-        subDiv.appendChild(imgDiv);
+        subButton.appendChild(imgDiv);
         let img = document.createElement('img');
         img.src = "";
         img.className = "attraction_img";
@@ -112,8 +117,8 @@ async function fetchAndDisplayData(url) {
         rectangleText.id = "rectangle_" + j;
         rectangle.appendChild(rectangleText);
 
-        // 將 rectangle 添加到 subDiv 中
-        subDiv.appendChild(rectangle);
+        // 將 rectangle 添加到 subButton 中
+        subButton.appendChild(rectangle);
 
         // 創建 details 元素
         let details = document.createElement('div');
@@ -141,10 +146,10 @@ async function fetchAndDisplayData(url) {
         details.appendChild(infoContainer);
 
         // 將 details 添加到 subDiv 中
-        subDiv.appendChild(details);
-
+        subButton.appendChild(details);
+        form.appendChild(subButton)
         // 將 subDiv 添加到 newGrid 中
-        newGrid.appendChild(subDiv);
+        newGrid.appendChild(form);
     }
 
     // 將新的 div 添加到目標元素中
@@ -227,13 +232,17 @@ search_button.addEventListener('click', async () => {
                 // 在 newGrid 中添加新的 attraction 元素
                 for (let i = 1; i < number + 1; i++) {
                     j = page * 12 + i;
-                    let subDiv = document.createElement('div');
-                    subDiv.className = "attraction attraction_" + j;
+                    id = data.data[i-1]["id"];
+                    let form = document.createElement('form');
+                    form.id = "form_" + id;
+                    form.action="/attraction/"+id;
+                    let subButton = document.createElement('button');
+                    subButton.className = "attraction attraction_" + j;
 
                     // 創建 img 元素
                     let imgDiv = document.createElement('div');
                     imgDiv.className="img";
-                    subDiv.appendChild(imgDiv);
+                    subButton.appendChild(imgDiv);
                     let img = document.createElement('img');
                     img.src = "";
                     img.className = "attraction_img";
@@ -251,7 +260,7 @@ search_button.addEventListener('click', async () => {
                     rectangle.appendChild(rectangleText);
 
                     // 將 rectangle 添加到 subDiv 中
-                    subDiv.appendChild(rectangle);
+                    subButton.appendChild(rectangle);
 
                     // 創建 details 元素
                     let details = document.createElement('div');
@@ -279,10 +288,10 @@ search_button.addEventListener('click', async () => {
                     details.appendChild(infoContainer);
 
                     // 將 details 添加到 subDiv 中
-                    subDiv.appendChild(details);
-
-                    // 將 subDiv 添加到 newGrid 中
-                    newGrid.appendChild(subDiv);
+                    subButton.appendChild(details);
+                    
+                    form.appendChild(subButton)
+                    newGrid.appendChild(form);
                 }
 
                 // 將新的 div 添加到目標元素中
