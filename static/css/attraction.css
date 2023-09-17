@@ -251,8 +251,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 hr{
     width: 1200px;
-    stroke-width: 1px;
-    stroke: var(--Gray-300, #E8E8E8);
+    border: none;
+    border-top: 1px solid #E8E8E8; 
 }
 .hr_con{
     width: 100%;
@@ -274,8 +274,8 @@ hr{
 }
 .hr_up{
     width: 100%;
-    stroke-width: 1px;
-    stroke: var(--Gray-300, #E8E8E8);
+    border: none;
+    border-top: 1px solid #E8E8E8;
 }
 .article{
     width: 100%;
