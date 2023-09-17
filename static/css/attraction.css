@@ -250,7 +250,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-radius:5px;
 }
 hr{
- width: 1200px;
+    width: 1200px;
+    stroke-width: 1px;
+    stroke: var(--Gray-300, #E8E8E8);
 }
 .hr_con{
     width: 100%;
@@ -259,6 +261,21 @@ hr{
     align-items: center;
     margin-top: 37px;
     margin-bottom: 40px;
+}
+.hr_con_up{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 37px;
+    margin-bottom: 40px;
+    position: absolute;
+    top: 20px;
+}
+.hr_up{
+    width: 100%;
+    stroke-width: 1px;
+    stroke: var(--Gray-300, #E8E8E8);
 }
 .article{
     width: 100%;
