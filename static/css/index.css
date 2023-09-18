@@ -38,6 +38,12 @@ body{
     font-size: 30px;
     font-style: normal;
     font-weight: 700;
+    border: none; 
+    outline: none; 
+    background: transparent; 
+    padding: 0; 
+    margin: 0; 
+    cursor: pointer; 
 }
 .button{
     display: flex;
@@ -142,6 +148,7 @@ body{
     box-shadow: none;
     cursor: pointer;
 }
+
 .icon_image{
     width: 30px;
     height: 30px;
@@ -296,6 +303,14 @@ main{
     border: 1px solid var(--secondary-color-gray-20, #E8E8E8);
     background: var(--White, #FFF);
     display: flex;
+    font-style: normal;
+    font-weight: 700;
+    border: none; 
+    outline: none; 
+    background: transparent; 
+    padding: 0; 
+    margin: 0; 
+    cursor: pointer;
 }
 .attraction_1 {
     grid-column: 1/4;
@@ -511,6 +526,8 @@ main{
     top: 158px;
     display: flex;
     align-items: center;
+    text-align: left;
+
 }
 .rectangle_text{
     width: 270px;

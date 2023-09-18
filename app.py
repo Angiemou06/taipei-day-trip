@@ -33,7 +33,7 @@ def index():
 	return render_template("index.html")
 @app.route("/attraction/<id>")
 def attraction(id):
-	return render_template("attraction.html")
+	return render_template("attraction.html", id = id)
 @app.route("/booking")
 def booking():
 	return render_template("booking.html")
@@ -74,9 +74,10 @@ def attractions():
                 longitude = row[6]
                 cursor.execute("SELECT * FROM figure WHERE attraction_id = %s", (id,))
                 fig_result = cursor.fetchall()
+                print(fig_result)
                 fig = []
                 for row in fig_result:
-                    fig.append(fig_result[0][2])
+                    fig.append(row[2])
                 data = {
                     "id": id,
                     "name": name,
@@ -187,7 +188,7 @@ def attractions():
                 fig_result = cursor.fetchall()
                 fig = []
                 for row in fig_result:
-                    fig.append(fig_result[0][2])
+                    fig.append(row[2])
                 data = {
                     "id": id,
                     "name": name,
@@ -248,7 +249,7 @@ def attractionId(attractionId):
 				fig_result = cursor.fetchall()
 				fig=[]
 				for row in fig_result:
-					fig.append(fig_result[0][2])
+					fig.append(row[2])
 				data={
 					"id": id,
 					"name": name,
