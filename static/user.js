@@ -54,12 +54,7 @@ function signInsignUp(){
 let signup_button = document.getElementById("sign-up-button")
 signup_button.addEventListener('click',()=>{
     fetchSignUp();
-})
-signup_password.addEventListener('keydown',(e)=>{
-    if(e.key === 'Enter'){
-        fetchSignUp();
-    }
-})
+});
 
 function fetchSignUp(){
     let data={
