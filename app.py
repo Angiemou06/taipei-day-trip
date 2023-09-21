@@ -2,6 +2,10 @@ from flask import *
 import mysql.connector.pooling
 from collections import Counter
 from flask_cors import CORS
+import jwt
+import datetime
+
+secret_key ="key123"
 
 db_config = {
     "pool_name": "mypool",
@@ -40,6 +44,79 @@ def booking():
 @app.route("/thankyou")
 def thankyou():
 	return render_template("thankyou.html")
+
+@app.route("/api/user",methods=["POST"])
+def signup():
+    data = request.get_json()
+    name = data["name"]
+    email = data["email"]
+    password = data["password"]
+    con, cursor = connect_to_database()
+    cursor.execute("SELECT email FROM member WHERE email = %s", (email,))
+    existing_user = cursor.fetchone()
+    try:
+        if name=="" or email=="" or password=="":
+            con.close()
+            return jsonify({"error": True, "message": "請輸入完整註冊資訊"}), 400
+        elif existing_user is not None:
+            return jsonify({"error": True, "message": "此信箱已被註冊"}), 400      
+        else:
+            cursor.execute("INSERT INTO member(name,email,password) VALUES (%s,%s,%s)",(name, email, password))
+            con.commit()
+            con.close()
+            return jsonify({"ok": True, "message": "註冊成功"}), 200 
+    except:
+         return jsonify({"error": True, "message": "內部伺服器錯誤"}), 500
+    
+@app.route("/api/user/auth",methods=["PUT"])
+def signin():
+    data = request.get_json()
+    email = data["email"]
+    password = data["password"]
+    con, cursor = connect_to_database()
+    cursor.execute("SELECT id,name,email FROM member WHERE (email,password) = (%s,%s)", (email,password))
+    existing_user = cursor.fetchone()
+    con.close()
+    try:
+        if email=="" or password=="":
+            return jsonify({"error": True, "message": "請完整輸入帳號及密碼資訊"}), 400
+        elif existing_user is None:
+            return jsonify({"error": True, "message": "帳號或密碼輸入錯誤"}), 400
+        else:
+            payload = {
+                'id': existing_user[0],
+                'name': existing_user[1],
+                'email':existing_user[2],
+                'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
+            }
+            token = jwt.encode(payload, secret_key, algorithm='HS256')
+            return jsonify({'token': token}), 200
+    except:
+        return jsonify({"error": True, "message": "內部伺服器錯誤"}), 500
+               
+@app.route("/api/user/auth",methods=["GET"])
+def check():
+    try:
+        authorization_header = request.headers.get('Authorization')
+        bearer_token = authorization_header.split(' ')[1]
+        decoded_token = jwt.decode(bearer_token, secret_key, algorithms=['HS256'])
+        id = decoded_token['id']
+        name = decoded_token['name']
+        email=decoded_token['email']
+        data = {
+            "data": {
+                "id": id,
+                "name": name,
+                "email": email
+            }
+        }
+        return jsonify(data), 200
+    except:
+          data ={
+               "data":None
+          }
+          return jsonify(data), 401
+     
 
 @app.route("/api/attractions", methods=["GET"])
 def attractions():

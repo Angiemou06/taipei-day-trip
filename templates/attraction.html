@@ -7,6 +7,65 @@
     <link rel="stylesheet" type="text/css" href="../static/css/attraction.css">
 </head>
 <body>
+    <div class="full-page" id="full-page">
+    </div>
+    <div class="sign-in-container">
+        <div class="sign-in-page">
+            <div class="top-area">
+            </div>
+            <div class="sign-in-title">
+                登入會員帳號
+            </div>
+            <button class="close-container">
+                <img src="../static/image/icon_close.png" class="close-button"/>
+            </button>
+            <div class="sign-in-input-container">
+                <input id="sign-in-email" placeholder="輸入電子信箱" class="sign-in-input"/>
+            </div>
+            <div class="sign-in-input-container">
+                <input type="password" id="sign-in-password" placeholder="輸入密碼" class="sign-in-input"/>
+            </div>
+            <div class="sign-in-button-container">
+                <button class="sign-in-button" id="sign-in-button">登入帳戶</button>
+            </div>
+            <p id="sign-in-message" class="sign-message"></p>
+            <div class="question-container">
+                <button class="question" id="sign-in-question-btn">
+                    還沒有帳戶？點此註冊
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="sign-up-container">
+        <div class="sign-up-page">
+            <div class="top-area">
+            </div>
+            <div class="sign-in-title">
+                註冊會員帳號
+            </div>
+            <button class="close-container-2">
+                <img src="../static/image/icon_close.png" class="close-button"/>
+            </button>
+            <div class="sign-in-input-container">
+                <input type="text" placeholder="輸入姓名" class="sign-in-input" id="sign-up-name"/>
+            </div>
+            <div class="sign-in-input-container">
+                <input type="text" placeholder="輸入電子郵件" class="sign-in-input" id="sign-up-email"/>
+            </div>
+            <div class="sign-in-input-container">
+                <input type="password" placeholder="輸入密碼" class="sign-in-input" id="sign-up-password"/>
+            </div>
+            <div class="sign-in-button-container">
+                <button class="sign-in-button" id="sign-up-button">註冊新帳戶</button>
+            </div>
+            <p id="sign-up-message" class="sign-message"></p>
+            <div class="question-container">
+                <button class="question" id="sign-up-question-btn">
+                    已經有帳戶了？點此登入
+                </button>
+            </div>
+        </div>
+    </div>
     <div class="navigation_con">
         <div class="navigation">
             <form action="/">
@@ -19,7 +78,7 @@
                 <button class="button_top">
                     預定行程
                 </button>
-                <button class="button_top">
+                <button class="button_top" id="signIn-signUp-button">
                     登入/註冊
                 </button>
             </div>
@@ -27,7 +86,7 @@
     </div>
     <div class="hr_con_up">
         <hr class="hr_up">
-   </div>
+</div>
     <main>
         <div class="top_con">
             <div class="top">
@@ -101,7 +160,7 @@
         </div>
     </div>
     <div class="hr_con">
-         <hr>
+        <hr>
     </div>
     <div class="down">
         <div class="article">
@@ -133,6 +192,9 @@
         id = "{{ id }}"
     </script>
     <script src="../static/attraction.js">
+
+    </script>
+    <script src="../static/user.js">
 
     </script>
 </body>

@@ -393,7 +393,169 @@ img{
 .dot-group__dot-other{
     background-color: #FFFFFF;
 }
-
+.sign-in-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:80px;
+    z-index: 100;
+    display: none;
+}
+.sign-in-page{
+    width: 340px;
+    height: 275px;
+    border-radius: 6px;
+    background-color: #FFF ;
+    box-shadow: 0px 4px 60px 0px #AAA;
+    position: relative;
+}
+.top-area{
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    height: 10px;
+    width: 100%;
+    background :linear-gradient(270deg, #378 0%, #6AB 100%);
+}
+.sign-in-title{
+    color: #666;
+    text-align: center;
+    font-family: Noto Sans TC;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+.close-container{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top:20px;
+    right: 10px;
+    border: none; 
+    outline: none; 
+    cursor: pointer;
+    background: transparent;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-container-2{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top:20px;
+    right: 10px;
+    border: none; 
+    outline: none; 
+    cursor: pointer;
+    background: transparent;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-button{
+    width: 16px;
+    height: 16px;
+    margin: 7px;
+}
+.sign-in-input-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sign-in-input{
+    width: 280px;
+    height: 17px;
+    border: none;
+    outline: 1px solid #cccccc;
+    color: #757575;
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.sign-in-button-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sign-in-button{
+    width: 310px;
+    height: 47px;
+    background: #489;
+    border-radius: 5px;
+    color: #FFF;
+    text-align: center;
+    font-family: Noto Sans TC;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    margin-top: 10px;
+    border: none; 
+    outline: none; 
+    cursor: pointer;
+}
+.question-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.question{
+    color: #666;
+    text-align: center;
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    border: none; 
+    outline: none; 
+    cursor: pointer;
+    background: transparent;
+}
+.full-page{
+    background: #000;
+    opacity:0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 99;
+    display: none;
+}
+.sign-up-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:80px;
+    z-index: 100;
+    display: none;
+}
+.sign-up-page{
+    width: 340px;
+    height: 332px;
+    border-radius: 6px;
+    background-color: #FFF ;
+    box-shadow: 0px 4px 60px 0px #AAA;
+    position: relative;
+}
+.sign-message{
+    height: 10px;
+    margin: 0;
+}
 @media (max-width: 1200px) {
     .image_con{
         width: 60%;
