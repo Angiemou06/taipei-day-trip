@@ -58,7 +58,7 @@ def signup():
         if name=="" or email=="" or password=="":
             con.close()
             return jsonify({"error": True, "message": "請輸入完整註冊資訊"}), 400
-        elif existing_user is None:
+        elif existing_user is not None:
             con.close()
             return jsonify({"error": True, "message": "此信箱已被註冊"}), 400      
         else:
