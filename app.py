@@ -11,7 +11,7 @@ db_config = {
     "pool_name": "mypool",
     "pool_size": 10,
     "host": "localhost",
-    "user": "angie",
+    "user": "root",
     "password": "123456",
     "database": "taipei_day_trip"
 }
@@ -58,7 +58,8 @@ def signup():
         if name=="" or email=="" or password=="":
             con.close()
             return jsonify({"error": True, "message": "請輸入完整註冊資訊"}), 400
-        elif existing_user is not None:
+        elif existing_user is None:
+            con.close()
             return jsonify({"error": True, "message": "此信箱已被註冊"}), 400      
         else:
             cursor.execute("INSERT INTO member(name,email,password) VALUES (%s,%s,%s)",(name, email, password))
