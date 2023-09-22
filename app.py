@@ -11,7 +11,7 @@ db_config = {
     "pool_name": "mypool",
     "pool_size": 10,
     "host": "localhost",
-    "user": "angie",
+    "user": "root",
     "password": "123456",
     "database": "taipei_day_trip"
 }
@@ -152,7 +152,6 @@ def attractions():
                 longitude = row[6]
                 cursor.execute("SELECT * FROM figure WHERE attraction_id = %s", (id,))
                 fig_result = cursor.fetchall()
-                print(fig_result)
                 fig = []
                 for row in fig_result:
                     fig.append(row[2])
