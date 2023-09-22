@@ -54,14 +54,14 @@ def signup():
     con, cursor = connect_to_database()
     cursor.execute("SELECT email FROM member WHERE email = %s", (email,))
     existing_user = cursor.fetchone()
+    con.close()
     try:
         if name=="" or email=="" or password=="":
-            con.close()
             return jsonify({"error": True, "message": "請輸入完整註冊資訊"}), 400
         elif existing_user is not None:
-            con.close()
             return jsonify({"error": True, "message": "此信箱已被註冊"}), 400      
         else:
+            con, cursor = connect_to_database()
             cursor.execute("INSERT INTO member(name,email,password) VALUES (%s,%s,%s)",(name, email, password))
             con.commit()
             con.close()
