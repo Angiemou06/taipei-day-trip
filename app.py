@@ -11,7 +11,7 @@ db_config = {
     "pool_name": "mypool",
     "pool_size": 32,
     "host": "localhost",
-    "user": "angie∂",
+    "user": "angie",
     "password": "123456",
     "database": "taipei_day_trip"
 }
