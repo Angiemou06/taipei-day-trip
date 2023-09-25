@@ -22,7 +22,7 @@ scrollRightButton.addEventListener('click', () => {
     optionsContainer.scrollTo(scrollValue, 0);
 });
 
-window.onload = function () {
+function loadPage() {
     let url = "/api/attractions?page=0";
     fetch(url)
         .then(function (response) {
@@ -355,7 +355,5 @@ buttonsContainer.addEventListener('click', (event) => {
 
 
 
-
-
-
+window.onload=loadPage();
 
