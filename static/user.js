@@ -16,6 +16,8 @@ let signin_email = document.getElementById("sign-in-email");
 let signin_password = document.getElementById("sign-in-password");
 let signin_message = document.getElementById("sign-in-message");
 let userLoggedIn = false;
+let booking_button = document.getElementById("booking-button");
+let order_button =document.getElementById("order-button")
 
 // 登入、註冊會員頁面切換
 function signInsignUp(){
@@ -179,9 +181,17 @@ function checkUserStatus(){
         if(data["data"] !== null){
             button.textContent = "登出系統"
             userLoggedIn = true;
+            booking_button.addEventListener('click',()=>window.location.href = "/booking");
+            if(order_button){
+                order_button.addEventListener('click',()=>window.location.href="/booking");
+            };
         }
         else{
             userLoggedIn = false; 
+            booking_button.addEventListener('click',()=>signInsignUp());
+            if(order_button){
+                order_button.addEventListener('click',()=>signInsignUp());
+            };
         }
     })
     .catch(error => {

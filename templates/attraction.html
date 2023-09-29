@@ -75,7 +75,7 @@
             </form>
             
             <div class="button">
-                <button class="button_top">
+                <button class="button_top" id="booking-button">
                     預定行程
                 </button>
                 <button class="button_top" id="signIn-signUp-button">
@@ -86,7 +86,7 @@
     </div>
     <div class="hr_con_up">
         <hr class="hr_up">
-</div>
+    </div>
     <main>
         <div class="top_con">
             <div class="top">
@@ -126,7 +126,7 @@
                             </div>
                         </div>
                         <div class="choose_zone">
-                            <div class="text_3">選擇時間：</div>
+                            <div class="text_3" id="time">選擇時間：</div>
                             <div class="radio-group">
                                 <input type="radio" class="radio-input" id="r-1" name="number" onclick=checkCost(this)>
                                 <label for="r-1" class="radio-label">
@@ -152,7 +152,7 @@
                         <div class="space"></div>
                         <div class="text_4">元</div>
                     </div>
-                    <button class="order_button">
+                    <button class="order_button" id="order-button">
                         開始預約行程
                     </button>
                 </div>
@@ -192,10 +192,8 @@
         id = "{{ id }}"
     </script>
     <script src="../static/attraction.js">
-
     </script>
     <script src="../static/user.js">
-
     </script>
 </body>
 </html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台北一日遊</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/booking.css">
+</head>
+<body>
+    <div class="full-page" id="full-page">
+    </div>
+    <div class="sign-in-container">
+        <div class="sign-in-page">
+            <div class="top-area">
+            </div>
+            <div class="sign-in-title">
+                登入會員帳號
+            </div>
+            <button class="close-container">
+                <img src="../static/image/icon_close.png" class="close-button"/>
+            </button>
+            <div class="sign-in-input-container">
+                <input id="sign-in-email" placeholder="輸入電子信箱" class="sign-in-input"/>
+            </div>
+            <div class="sign-in-input-container">
+                <input type="password" id="sign-in-password" placeholder="輸入密碼" class="sign-in-input"/>
+            </div>
+            <div class="sign-in-button-container">
+                <button class="sign-in-button" id="sign-in-button">登入帳戶</button>
+            </div>
+            <p id="sign-in-message" class="sign-message"></p>
+            <div class="question-container">
+                <button class="question" id="sign-in-question-btn">
+                    還沒有帳戶？點此註冊
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="sign-up-container">
+        <div class="sign-up-page">
+            <div class="top-area">
+            </div>
+            <div class="sign-in-title">
+                註冊會員帳號
+            </div>
+            <button class="close-container-2">
+                <img src="../static/image/icon_close.png" class="close-button"/>
+            </button>
+            <div class="sign-in-input-container">
+                <input type="text" placeholder="輸入姓名" class="sign-in-input" id="sign-up-name"/>
+            </div>
+            <div class="sign-in-input-container">
+                <input type="text" placeholder="輸入電子郵件" class="sign-in-input" id="sign-up-email"/>
+            </div>
+            <div class="sign-in-input-container">
+                <input type="password" placeholder="輸入密碼" class="sign-in-input" id="sign-up-password"/>
+            </div>
+            <div class="sign-in-button-container">
+                <button class="sign-in-button" id="sign-up-button">註冊新帳戶</button>
+            </div>
+            <p id="sign-up-message" class="sign-message"></p>
+            <div class="question-container">
+                <button class="question" id="sign-up-question-btn">
+                    已經有帳戶了？點此登入
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="navigation_con">
+        <div class="navigation">
+            <form action="/">
+                <button class="title">
+                台北一日遊
+                </button>
+            </form>
+            
+            <div class="button">
+                <button class="button_top">
+                    預定行程
+                </button>
+                <button class="button_top" id="signIn-signUp-button">
+                    登入/註冊
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="hr_con_up">
+        <hr class="hr_up">
+    </div>
+    <div class="main">
+        <div class="welcome-text-zone-container">
+            <div class="welcome-text-zone">
+                <div class="welcome-text">
+                    您好，
+                </div>
+                <div class="member-name">
+                </div>
+                <div class="welcome-text">
+                    ，待預訂的行程如下：
+                </div>
+            </div>
+        </div>
+        <div class="order-detail-section-container">
+            <div class="order-detail-section">
+                <img class="order-images" />
+                <div class="info-container">
+                    <div class="info-title-container">
+                        <div class="info-title-sub-container">
+                            <div class="info-title">台北一日遊：</div>
+                            <div class="info-title" id="attraction-name"></div>
+                        </div>
+                        <button class="delete-icon"></button>
+                    </div>
+                    <div class="info-sub-container">
+                        <div class="info-text-title">日期：</div>
+                        <div class="info-text" id="order-date"></div>
+                    </div>
+                    <div class="info-sub-container">
+                        <div class="info-text-title">時間：</div>
+                        <div class="info-text" id="open-time"></div>
+                    </div>
+                    <div class="info-sub-container">
+                        <div class="info-text-title">費用：</div>
+                        <div class="info-text" id="price"></div>
+                    </div>
+                    <div class="info-sub-container">
+                        <div class="info-text-title">地點：</div>
+                        <div class="info-text" id="address"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hr_con">
+            <hr class="hr">
+        </div>
+        <div class="contact-detail-section-container">
+            <div class="contact-detail-section-sub-container">
+                <div class="contact-title-container">
+                    <div class="contact-title">您的聯絡資訊</div>
+                </div>
+                <div class="contact-info-container">
+                    <div class="contact-info-title">
+                        聯絡姓名：
+                    </div>
+                    <input class="contact-info-input"/>
+                </div>
+                <div class="contact-info-container">
+                    <div class="contact-info-title">
+                        聯絡信箱：
+                    </div>
+                    <input class="contact-info-input"/>
+                </div>
+                <div class="contact-info-container">
+                    <div class="contact-info-title">
+                        手機號碼：
+                    </div>
+                    <input class="contact-info-input"/>
+                </div>
+                <div class="contact-info-container">
+                    <div class="contact-info-text">
+                        請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hr_con">
+            <hr class="hr">
+        </div>
+        <div class="contact-detail-section-container">
+            <div class="contact-detail-section-sub-container">
+                <div class="contact-title-container">
+                    <div class="contact-title">信用卡付款資訊</div>
+                </div>
+                <div class="contact-info-container">
+                    <div class="contact-info-title">
+                        卡片號碼：
+                    </div>
+                    <input type="text" class="contact-info-input" placeholder="**** **** **** ****"/>
+                </div>
+                <div class="contact-info-container">
+                    <div class="contact-info-title">
+                        過期時間：
+                    </div>
+                    <input type="text" class="contact-info-input" placeholder="MM / YY"/>
+                </div>
+                <div class="contact-info-container">
+                    <div class="contact-info-title">
+                        驗證密碼：
+                    </div>
+                    <input type="text" class="contact-info-input" placeholder="CVV"/>
+                </div>
+            </div>
+        </div>
+        <div class="hr_con">
+            <hr class="hr">
+        </div>
+        <div class="confirm-zone-container">
+            <div class="confirm-zone">
+                <div class="confirm-price"></div>
+                <div class="confirm-order-button-container">
+                    <button class="confirm-order-button">
+                        確認訂購並付款
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <div class="footer-text">
+            COPYRIGHT © 2023 台北一日遊
+        </div>
+    </div>
+    <script src="../static/user.js">
+    </script>
+    <script src="../static/booking.js">
+    </script>
+</body>
+</html>
