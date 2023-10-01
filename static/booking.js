@@ -83,24 +83,26 @@ function getBooking(){
             footer.style.alignItems="initial";
             footer_text.style.marginTop="40px";
         }
-        order_image.src = data["data"]["attraction"]["image"];
-        attraction_name.innerHTML = data["data"]["attraction"]["name"];
-        const originalDate = new Date(data["data"]["date"]);
-        const year = originalDate.getFullYear();
-        const month = String(originalDate.getMonth() + 1).padStart(2, '0');
-        const day = String(originalDate.getDate()).padStart(2, '0');
-        const formattedDate = year+"-"+month+"-"+day;
-        order_date.innerHTML = formattedDate;
-        const time = data["data"]["time"];
-        if (time==="morning"){
-            open_time.innerHTML = "早上9點到下午4點";
-        }
         else{
-            open_time.innerHTML = "下午2點到晚上9點";
+            order_image.src = data["data"]["attraction"]["image"];
+            attraction_name.innerHTML = data["data"]["attraction"]["name"];
+            const originalDate = new Date(data["data"]["date"]);
+            const year = originalDate.getFullYear();
+            const month = String(originalDate.getMonth() + 1).padStart(2, '0');
+            const day = String(originalDate.getDate()).padStart(2, '0');
+            const formattedDate = year+"-"+month+"-"+day;
+            order_date.innerHTML = formattedDate;
+            const time = data["data"]["time"];
+            if (time==="morning"){
+                open_time.innerHTML = "早上9點到下午4點";
+            }
+            else{
+                open_time.innerHTML = "下午2點到晚上9點";
+            }
+            price.innerHTML = "新台幣 "+data["data"]["price"]+" 元";
+            address.innerHTML = data["data"]["attraction"]["address"];
+            confirm_price.innerHTML = "總價：新台幣"+data["data"]["price"]+"元";
         }
-        price.innerHTML = "新台幣 "+data["data"]["price"]+" 元";
-        address.innerHTML = data["data"]["attraction"]["address"];
-        confirm_price.innerHTML = "總價：新台幣"+data["data"]["price"]+"元";
     });
 };
 

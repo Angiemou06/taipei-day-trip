@@ -11,7 +11,7 @@ db_config = {
     "pool_name": "mypool",
     "pool_size": 32,
     "host": "localhost",
-    "user": "angie",
+    "user": "root",
     "password": "123456",
     "database": "taipei_day_trip"
 }
@@ -74,8 +74,8 @@ def signup():
         cursor.execute(
             "INSERT INTO member(name,email,password) VALUES (%s,%s,%s)", (name, email, password))
         con.commit()
-        con.close()
         cursor.close()
+        con.close()
         return jsonify({"ok": True, "message": "註冊成功"}), 200
     except:
         return jsonify({"error": True, "message": "內部伺服器錯誤"}), 500
@@ -90,8 +90,8 @@ def signin():
     cursor.execute(
         "SELECT id,name,email FROM member WHERE (email,password) = (%s,%s)", (email, password))
     existing_user = cursor.fetchone()
-    con.close()
     cursor.close()
+    con.close()
     try:
         if email == "" or password == "":
             return jsonify({"error": True, "message": "請完整輸入帳號及密碼資訊"}), 400
@@ -155,7 +155,6 @@ def attractions():
             cursor.execute(
                 "SELECT * FROM attraction LIMIT 12 OFFSET %s", (offset,))
             result = cursor.fetchall()
-            con.close()
             attractions_data = []
             for row in result:
                 id = row[0]
@@ -187,6 +186,7 @@ def attractions():
                 }
                 attractions_data.append(data)
             cursor.close()
+            con.close()
             limit_page = number // 12
             if page < limit_page:
                 nextPage = page + 1
@@ -253,7 +253,6 @@ def attractions():
         cursor.execute("SELECT * FROM attraction WHERE MRT = %s OR name LIKE %s LIMIT 12 OFFSET %s",
                        (keyword, "%" + keyword + "%", offset))
         result = cursor.fetchall()
-        con.close()
         if len(result) == 0:
             return sortpage(page)
         else:
@@ -305,6 +304,7 @@ def attractions():
                 "data": attractions_data
             }
             cursor.close()
+            con.close()
             response = json.dumps(response, ensure_ascii=False)
             return response, 200, {"Content-Type": "application/json"}
     else:
@@ -334,7 +334,6 @@ def attractionId(attractionId):
             cursor.execute(
                 "SELECT * FROM attraction WHERE id=%s", (attractionId,))
             result = cursor.fetchall()
-            con.close()
             for row in result:
                 id = row[0]
                 name = row[1]
@@ -368,6 +367,7 @@ def attractionId(attractionId):
                 }
             response = json.dumps(response, ensure_ascii=False)
             cursor.close()
+            con.close()
             return response, 200, {"Content-Type": "application/json"}
         except ValueError:
             response_data = {
@@ -383,7 +383,6 @@ def mrts():
     con, cursor = connect_to_database()
     cursor.execute("SELECT MRT FROM attraction")
     data = cursor.fetchall()
-    con.close()
     data_list = []
     for name in data:
         if name[0] != None:
@@ -405,6 +404,7 @@ def mrts():
     # 可以去檢測這個COUNT效率好不好，該如何優化，可以用EXPLAIN＋索引看能不能優化，假如不行，可以考慮要不要做快取，做完之後把結果先存起來放在全域變數裡，可以從裡面拿就好，比較快，但要注意資料更新時變數需要更新（空間換取時間）
     response = json.dumps(response, ensure_ascii=False)
     cursor.close()
+    con.close()
     return response, 200, {"Content-Type": "application/json"}
 
 
@@ -420,12 +420,11 @@ def postBooking():
         con, cursor = connect_to_database()
         cursor.execute("SELECT id FROM member WHERE id = %s", (id,))
         result = cursor.fetchone()
-        con.close()
         cursor.close()
+        con.close()
     if not result:
         return jsonify({"error": True, "message": "未登入系統，存取遭拒"}), 403
     data = request.get_json()
-    print(data)
     attractionId = data["attractionId"]
     date = data["date"]
     time = data["time"]
@@ -440,8 +439,8 @@ def postBooking():
             cursor.execute(
                 "INSERT INTO booking (member_id, attraction_id, date, time, price) VALUES (%s,%s,%s,%s,%s)", (id, attractionId, date, time, price))
             con.commit()
-            con.close()
             cursor.close()
+            con.close()
             return jsonify({"ok": True}), 200
         else:
             return jsonify({"error": "找不到相關景點資料"}), 400
@@ -453,7 +452,6 @@ def postBooking():
 def getBooking():
     try:
         authorization_header = request.headers.get('Authorization')
-        result = None
         if (authorization_header):
             bearer_token = authorization_header.split(' ')[1]
             decoded_token = jwt.decode(
@@ -463,7 +461,7 @@ def getBooking():
             return jsonify({"error": True, "message": "未登入系統，存取遭拒"}), 403
         con, cursor = connect_to_database()
         cursor.execute(
-            "SELECT * FROM booking WHERE member_id=%s ORDER BY id DESC LIMIT 1;", (id,))
+            "SELECT * FROM booking WHERE member_id=%s;", (id,))
         result2 = cursor.fetchone()
         attractionId = result2[2]
         cursor.execute(
