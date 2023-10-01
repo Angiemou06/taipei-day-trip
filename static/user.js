@@ -182,9 +182,6 @@ function checkUserStatus(){
             button.textContent = "登出系統"
             userLoggedIn = true;
             booking_button.addEventListener('click',()=>window.location.href = "/booking");
-            if(order_button){
-                order_button.addEventListener('click',()=>window.location.href="/booking");
-            };
         }
         else{
             userLoggedIn = false; 

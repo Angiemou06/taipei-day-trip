@@ -119,7 +119,7 @@ function changeImage(){
 window.onload=getAPIData();
 window.onload=getDate();
 
-order_button = document.querySelector(".order_button");
+order_button = document.getElementById("order-button");
 postBooking();
 
 function postBooking(){
@@ -159,7 +159,10 @@ function postBooking(){
             }
         })
         .then(function(back) {
-            console.log(back);   
+            console.log("test")
+            if(back){
+                window.location.href="/booking";
+            };   
         });
     });
 };
