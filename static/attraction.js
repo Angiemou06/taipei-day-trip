@@ -1,7 +1,7 @@
 let Data=[];
 
 function getDate(){
-    date = document.getElementById("date");
+    let date = document.getElementById("date");
     let currentDate = new Date();
     let year = currentDate.getFullYear();
     let month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
@@ -11,7 +11,6 @@ function getDate(){
 }
 
 function checkCost(number){
-    console.log(number);
     let id = number.id;
     cost = document.getElementById("cost");
     if (id==="r-1"){
@@ -119,3 +118,51 @@ function changeImage(){
 
 window.onload=getAPIData();
 window.onload=getDate();
+
+order_button = document.getElementById("order-button");
+postBooking();
+
+function postBooking(){
+    const jwtToken = localStorage.getItem('Token');
+    const header = {
+        'Authorization': `Bearer ${jwtToken}`,
+        'Content-Type': 'application/json'
+    };
+    
+    order_button.addEventListener('click',()=>{
+        date_value = document.getElementById("date").value;
+        const radioButtons = document.querySelectorAll('input[name="number"]');
+        radioButtons.forEach(function(radioButtons) {
+            if (radioButtons.checked) {
+                time_id = radioButtons.id;
+            }
+        });
+        if (time_id == "r-1"){
+            time="morning";
+            price=2000;
+        }
+        else if (time_id == "r-2"){
+            time="afternoon";
+            price=2500;
+        };
+        const data = {
+            "attractionId": id,
+            "date": date_value,
+            "time": time,
+            "price": price
+        };
+        src = "/api/booking";
+        fetch(src,{method: "POST",headers: header,body: JSON.stringify(data)})
+        .then(function(response) {
+            if (response) {
+                return response.json();
+            }
+        })
+        .then(function(back) {
+            console.log("test")
+            if(back){
+                window.location.href="/booking";
+            };   
+        });
+    });
+};

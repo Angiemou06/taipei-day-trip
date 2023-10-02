@@ -356,4 +356,3 @@ buttonsContainer.addEventListener('click', (event) => {
 
 
 window.onload=loadPage();
-

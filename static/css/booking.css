@@ -1,0 +1,509 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.main{
+    width: 100%;
+    position: relative;
+    top:94px;
+}
+.navigation_con{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #FFF;
+    z-index: 2;
+}
+.navigation {
+    padding-top: 10px; 
+    padding-bottom: 10px;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+.title{
+    color: var(--primary-color-cyan-70, #489);
+    font-family: Noto Sans TC;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    background: transparent; 
+}
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button_top{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    color: var(--secondary-color-gray-70, #666);
+    padding: 10px;
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.hr{
+    width: 1200px;
+    border: none;
+    border-top: 1px solid #E8E8E8;
+    margin-top: 40px;
+    margin-bottom: 40px; 
+}
+
+.hr_con{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.hr_con_up{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 37px;
+    margin-bottom: 40px;
+    position: absolute;
+    top: 20px;
+}
+.hr_up{
+    width: 100%;
+    border: none;
+    border-top: 1px solid #E8E8E8;
+}
+
+.footer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 104px;
+    background-color: #757575;
+    position: relative;
+    top: 100px;
+}
+.footer-text{
+    color: var(--additional-color-white, #FFF);
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+}
+.sign-in-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:80px;
+    z-index: 100;
+    display: none;
+}
+.sign-in-page{
+    width: 340px;
+    height: 275px;
+    border-radius: 6px;
+    background-color: #FFF ;
+    box-shadow: 0px 4px 60px 0px #AAA;
+    position: relative;
+}
+.top-area{
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    height: 10px;
+    width: 100%;
+    background :linear-gradient(270deg, #378 0%, #6AB 100%);
+}
+.sign-in-title{
+    color: #666;
+    text-align: center;
+    font-family: Noto Sans TC;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+.close-container{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top:20px;
+    right: 10px;
+    border: none; 
+    outline: none; 
+    cursor: pointer;
+    background: transparent;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-container-2{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top:20px;
+    right: 10px;
+    border: none; 
+    outline: none; 
+    cursor: pointer;
+    background: transparent;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-button{
+    width: 16px;
+    height: 16px;
+    margin: 7px;
+}
+.sign-in-input-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sign-in-input{
+    width: 280px;
+    height: 17px;
+    border: none;
+    outline: 1px solid #cccccc;
+    color: #757575;
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.sign-in-button-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sign-in-button{
+    width: 310px;
+    height: 47px;
+    background: #489;
+    border-radius: 5px;
+    color: #FFF;
+    text-align: center;
+    font-family: Noto Sans TC;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    margin-top: 10px;
+    border: none; 
+    outline: none; 
+    cursor: pointer;
+}
+.question-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.question{
+    color: #666;
+    text-align: center;
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    border: none; 
+    outline: none; 
+    cursor: pointer;
+    background: transparent;
+}
+.full-page{
+    background: #000;
+    opacity:0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 99;
+    display: none;
+}
+.sign-up-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:80px;
+    z-index: 100;
+    display: none;
+}
+.sign-up-page{
+    width: 340px;
+    height: 332px;
+    border-radius: 6px;
+    background-color: #FFF ;
+    box-shadow: 0px 4px 60px 0px #AAA;
+    position: relative;
+}
+.sign-message{
+    height: 10px;
+    margin: 0;
+}
+
+.welcome-text-zone{
+    display: flex;
+    width: 1000px;
+    align-items: flex-start;
+}
+.welcome-text-zone-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.welcome-text{
+    color: var(--secondary-color-gray-70, #666);
+    font-family: Noto Sans TC;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 35px;
+}
+.member-name{
+    color: var(--secondary-color-gray-70, #666);
+    font-family: Noto Sans TC;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 700;
+}
+.order-detail-section{
+    width: 980px;
+    display: flex;
+}
+.order-detail-section-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.order-images{
+    width: 250px;
+    height: 200px;
+}
+.info-container{
+    width: 700px;
+    height: 170px;
+    margin-left: 30px;
+}
+.info-title{
+    color: var(--primary-color-cyan-70, #489);
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+}
+.info-title-container{
+    display: flex;
+    justify-content: space-between;
+}
+.info-title-sub-container{
+    display: flex;
+    margin-bottom: 20px;
+}
+.delete-icon{
+    width: 30px;
+    height: 30px;
+    background-image: url("../image/icon_delete.png");
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+.info-sub-container{
+    display: flex;
+    margin-bottom: 10px;
+}
+.info-text-title{
+    color: var(--secondary-color-gray-70, #666);
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.info-text{
+    color: var(--secondary-color-gray-70, #666);
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+.contact-detail-section-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contact-title-container{
+    width: 980px;
+    margin-bottom: 20px;
+}
+.contact-detail-section-sub-container{
+    width: 980px;
+}
+.contact-title{
+    color: var(--secondary-color-gray-70, #666);
+    font-family: Noto Sans TC;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 700;
+}
+.contact-info-container{
+    display: flex;
+    align-items: center;
+    width: 980px;
+    margin-bottom: 15px;
+}
+.contact-info-title{
+    color: var(--secondary-color-gray-70, #666);
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+.contact-info-input{
+    width: 178px;
+    height: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--Gray-300, #E8E8E8);
+    background: var(--White, #FFF);
+}
+.contact-info-text{
+    color: var(--secondary-color-gray-70, #666);
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+}
+.confirm-zone-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.confirm-zone{
+    width: 980px;
+}
+.confirm-price{
+    text-align: right;
+    color: var(--Gray-800, #666);
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+.confirm-order-button-container{
+    text-align: right;
+}
+.confirm-order-button{
+    border-radius: 5px;
+    background: var(--primary-color-cyan-70, #489);
+    width: 173px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: var(--additional-color-white, #FFF);
+    text-align: center;
+    font-family: Noto Sans TC;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    border: none;
+    margin-bottom: 62px;
+}
+@media (max-width: 1200px) {
+    
+    .main{
+        width: 100%;
+        margin: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+        top:96px;
+    }
+    .order-detail-section{
+        width: 100%;
+        display: block;
+    }
+    .order-images{
+        width: 100%;
+        object-fit: cover;
+        object-position: center center;
+        height: 200px;
+    }
+    .contact-detail-section-sub-container{
+        width: 100%;
+    }
+    .hr{
+        width: 100%;
+    }
+    .contact-detail-section-sub-container{
+        width: 100%;
+    }
+    .contact-info-container{
+        width: 100%;
+        overflow-wrap: break-word;
+    }
+    .navigation_con{
+        width: 100vw;
+    }
+    .navigation {
+        width: 100%;
+    }
+    .info-title{
+        margin-top: 30px;
+    }
+    .info-container{
+        margin-left: 0;
+    }
+    .info-container{
+        width: 100%;
+        height: 200px;
+        position: relative;
+    }
+    .delete-icon{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    .contact-title-container{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .info-title{
+        margin-top: 35px;
+    }
+
+}
