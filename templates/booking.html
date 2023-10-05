@@ -142,19 +142,19 @@
                     <div class="contact-info-title">
                         聯絡姓名：
                     </div>
-                    <input class="contact-info-input"/>
+                    <input class="contact-info-input" id="name"/>
                 </div>
                 <div class="contact-info-container">
                     <div class="contact-info-title">
                         聯絡信箱：
                     </div>
-                    <input class="contact-info-input"/>
+                    <input class="contact-info-input" id="email"/>
                 </div>
                 <div class="contact-info-container">
                     <div class="contact-info-title">
                         手機號碼：
                     </div>
-                    <input class="contact-info-input"/>
+                    <input class="contact-info-input" id="phone-number"/>
                 </div>
                 <div class="contact-info-container">
                     <div class="contact-info-text">
@@ -172,22 +172,22 @@
                     <div class="contact-title">信用卡付款資訊</div>
                 </div>
                 <div class="contact-info-container">
-                    <div class="contact-info-title">
+                    <div class="contact-info-title" >
                         卡片號碼：
                     </div>
-                    <input type="text" class="contact-info-input" placeholder="**** **** **** ****"/>
+                    <div class="contact-card-info-input" id="card-number"></div>
                 </div>
                 <div class="contact-info-container">
                     <div class="contact-info-title">
                         過期時間：
                     </div>
-                    <input type="text" class="contact-info-input" placeholder="MM / YY"/>
+                    <div class="contact-card-info-input" id="card-expiration-date"></div>
                 </div>
                 <div class="contact-info-container">
                     <div class="contact-info-title">
                         驗證密碼：
                     </div>
-                    <input type="text" class="contact-info-input" placeholder="CVV"/>
+                    <div class="contact-card-info-input" id="card-ccv"></div>
                 </div>
             </div>
         </div>
@@ -198,7 +198,7 @@
             <div class="confirm-zone">
                 <div class="confirm-price"></div>
                 <div class="confirm-order-button-container">
-                    <button class="confirm-order-button">
+                    <button class="confirm-order-button" id="pay-button">
                         確認訂購並付款
                     </button>
                 </div>
@@ -212,6 +212,8 @@
             COPYRIGHT © 2023 台北一日遊
         </div>
     </div>
+    <script src="https://js.tappaysdk.com/sdk/tpdirect/v5.14.0"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../static/user.js">
     </script>
     <script src="../static/booking.js">
