@@ -4,6 +4,10 @@ from collections import Counter
 from flask_cors import CORS
 import jwt
 import datetime
+import time
+import random
+import requests
+
 
 secret_key = "key123"
 
@@ -54,7 +58,8 @@ def booking():
 
 @app.route("/thankyou")
 def thankyou():
-    return render_template("thankyou.html")
+    order_number = request.args.get("number", None)
+    return render_template("thankyou.html", order_number=order_number)
 
 
 @app.route("/api/user", methods=["POST"])
@@ -503,6 +508,113 @@ def deleteBooking():
         cursor.close()
         con.close()
         return jsonify({"ok": True}), 200
+    except:
+        return jsonify({"error": True, "message": "伺服器內部錯誤"}), 500
+
+
+@app.route("/api/orders", methods=["POST"])
+def order():
+    try:
+        authorization_header = request.headers.get('Authorization')
+        if (authorization_header):
+            bearer_token = authorization_header.split(' ')[1]
+            decoded_token = jwt.decode(
+                bearer_token, secret_key, algorithms=['HS256'])
+            id = decoded_token['id']
+        if not id:
+            return jsonify({"error": True, "message": "未登入系統，存取遭拒"}), 403
+        data = request.get_json()
+        if (data == {}):
+            return jsonify({"error": True, "message": "沒有收到訂單資料"}), 400
+        con, cursor = connect_to_database()
+        timestamp = int(time.time())  # 當前時間戳
+        random_number = random.randint(1000, 9999)  # 生成4位隨機數
+        order_number = timestamp + random_number
+        cursor.execute(
+            "INSERT INTO orders (order_number, order_status, price,attraction_id,attraction_name,attraction_address,attraction_image,date,time,name,phone,email) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (order_number, "未付款", data["order"]["price"], data["order"]["trip"]["attraction"]["id"], data["order"]["trip"]["attraction"]["name"], data["order"]["trip"]["attraction"]["address"], data["order"]["trip"]["attraction"]["image"], data["order"]["trip"]["date"], data["order"]["trip"]["time"], data["order"]["contact"]["name"], data["order"]["contact"]["phone"], data["order"]["contact"]["email"]))
+        con.commit()
+        cursor.close()
+        con.close()
+        payment_data = {
+            "prime": data["prime"],
+            "partner_key": "partner_BeFocFT399egpcH719rmrD24xWWxQ3nveS02qY7SKCgUjA8Pcgd55kvY",
+            "merchant_id": "angie06",
+            "details": "TapPay Test",
+            "amount": 100,
+            "cardholder": {
+                "phone_number": data["order"]["contact"]["phone"],
+                "name": data["order"]["contact"]["name"],
+                "email": data["order"]["contact"]["email"],
+            },
+            "remember": True
+        }
+        response = requests.post(
+            "https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime", json=payment_data)
+
+        if response.status_code == 200:
+            # 付款成功
+            con, cursor = connect_to_database()
+            cursor.execute(
+                "UPDATE orders SET order_status = %s WHERE order_number = %s", ("已付款", order_number))
+            con.commit()
+            cursor.close()
+            con.close()
+            response = {
+                "data": {
+                    "number": order_number,
+                    "payment": {
+                        "status": 0,
+                        "message": "付款成功"
+                    }
+                }
+            }
+            return jsonify(response), 200
+        else:
+            # 付款失敗
+            response = {
+                "data": {
+                    "number": order_number,
+                    "payment": {
+                        "status": 1,
+                        "message": "付款失敗"
+                    }
+                }
+            }
+            return jsonify(response), 400
+    except:
+        return jsonify({"error": True, "message": "伺服器內部錯誤"}), 500
+
+
+@app.route("/api/order/<orderNumber>", methods=["get"])
+def orderCheck(orderNumber):
+    try:
+        authorization_header = request.headers.get('Authorization')
+        if (authorization_header):
+            bearer_token = authorization_header.split(' ')[1]
+            decoded_token = jwt.decode(
+                bearer_token, secret_key, algorithms=['HS256'])
+            id = decoded_token['id']
+        if not id:
+            return jsonify({"error": True, "message": "未登入系統，存取遭拒"}), 403
+        if orderNumber is None:
+            response = {
+                "error": True,
+                "message": "沒有找到訂單編號"
+            }
+            return jsonify(response), 400
+        con, cursor = connect_to_database()
+        cursor.execute(
+            "SELECT * FROM orders WHERE order_number = %s", (orderNumber,))
+        existing_user = cursor.fetchone()
+        order_status = existing_user[2]
+        name = existing_user[10]
+        data = {
+            "order_status": order_status,
+            "name": name
+        }
+        cursor.close()
+        con.close()
+        return jsonify(data), 200
     except:
         return jsonify({"error": True, "message": "伺服器內部錯誤"}), 500
 

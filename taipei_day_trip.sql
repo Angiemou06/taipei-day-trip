@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.1.0, for macos13 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.34, for macos13 (arm64)
 --
 -- Host: localhost    Database: taipei_day_trip
 -- ------------------------------------------------------
@@ -7,7 +7,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -65,7 +65,7 @@ CREATE TABLE `booking` (
   KEY `member_id` (`member_id`),
   KEY `attraction_id` (`attraction_id`),
   CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=204 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +74,7 @@ CREATE TABLE `booking` (
 
 LOCK TABLES `booking` WRITE;
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
-INSERT INTO `booking` VALUES (141,2,22,'2023-10-06','afternoon',2500);
+INSERT INTO `booking` VALUES (201,3,4,'2023-10-26','afternoon',2500);
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,6 +128,41 @@ LOCK TABLES `member` WRITE;
 INSERT INTO `member` VALUES (1,'ann','ann@gmail.com','12345'),(2,'ply','ply@ply','123'),(3,'test','test@gmail.com','123');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `orders` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `order_number` bigint NOT NULL,
+  `order_status` varchar(10) NOT NULL,
+  `price` int NOT NULL,
+  `attraction_id` int NOT NULL,
+  `attraction_name` varchar(50) NOT NULL,
+  `attraction_address` varchar(255) NOT NULL,
+  `attraction_image` varchar(255) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `time` varchar(20) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,1696451187,'未付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','','',''),(2,1696453812,'未付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','angie','0955565612','annieaa61723@gmail.com'),(3,1696451464,'未付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','angie','0955666666','annieaa61723@gmail.com'),(4,1696451100,'未付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','angie','0955666666','angiemou666@gmail.com'),(5,1696449289,'未付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','alice','0955666666','annieaa61723@gmail.com'),(6,1696451930,'未付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','angie','09556666666','annieaa61723@gmail.com'),(7,1696448228,'未付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','Angie','0955666666','annieaa61723@gmail.com'),(8,1696455428,'未付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','','',''),(9,1696454664,'未付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','','',''),(10,1696453698,'已付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','','',''),(11,1696451177,'已付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','','',''),(12,1696452241,'已付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','','',''),(13,1696499706,'已付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','angie','0955666666','angiemou666@gmail.com'),(14,1696501330,'已付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','angie','0955666666','angiemou666@gmail.com'),(15,1696499094,'已付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','angie','0955666666','annieaa61723@gmail.com'),(16,1696499715,'已付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','','',''),(17,1696501381,'已付款',2500,2,'大稻埕碼頭','臺北市  大同區環河北路一段','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000340.jpg','2023-10-11','afternoon','Angie','0955666666','angiemou666@gmail.com'),(18,1696502892,'已付款',2500,1,'新北投溫泉區','臺北市  北投區中山路、光明路沿線','https://www.travel.taipei/d_upload_ttn/sceneadmin/pic/11000848.jpg','2023-10-12','afternoon','angie','0955666666','annieaa61723@gmail.com'),(19,1696506330,'已付款',2500,4,'國立故宮博物院','臺北市  士林區至善路二段221號','https://www.travel.taipei/d_upload_ttn/sceneadmin/image/a0/b0/c0/d14/e810/f21/48d66fbd-1ba3-4efd-837a-3767db5f52e0.jpg','2023-10-19','afternoon','apple','0955666666','angiemou666@gmail.com');
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -138,4 +173,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-30  3:17:23
+-- Dump completed on 2023-10-05 17:50:35

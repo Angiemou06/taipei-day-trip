@@ -398,6 +398,24 @@ body{
     border: 1px solid var(--Gray-300, #E8E8E8);
     background: var(--White, #FFF);
 }
+.contact-info-input{
+    width: 178px;
+    height: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--Gray-300, #E8E8E8);
+    background: var(--White, #FFF);
+    color: gary;
+}
+.contact-card-info-input{
+    width: 178px;
+    height: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--Gray-300, #E8E8E8);
+    background: var(--White, #FFF);
+    color: gray;
+}
 .contact-info-text{
     color: var(--secondary-color-gray-70, #666);
     font-family: Noto Sans TC;
